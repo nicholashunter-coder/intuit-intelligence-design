@@ -12,6 +12,14 @@ export function baseOptions(): BaseLayoutProps {
         url: '/docs',
         active: 'nested-url',
       },
+      {
+        text: 'Components',
+        url: '/docs/design/components',
+      },
+      {
+        text: 'Prototypes',
+        url: '/docs/prototypes/card-interactions',
+      },
     ],
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
   };
