@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://www.nerdwallet.com/article/small-business/import-bank-transactions-quickbooks",
+    "domain": "nerdwallet.com",
+    "company_name": "NerdWallet",
+    "name_source": "known_lookup",
+    "title": null,
+    "favicon_page": null,
+    "favicon_google": "https://www.google.com/s2/favicons?sz=32&domain=nerdwallet.com",
+    "fetch_error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://www.businessnewsdaily.com/6391-bank-feeds-quickbooks.html",
+    "domain": "businessnewsdaily.com",
+    "company_name": "Business News Daily",
+    "name_source": "known_lookup",
+    "title": null,
+    "favicon_page": null,
+    "favicon_google": "https://www.google.com/s2/favicons?sz=32&domain=businessnewsdaily.com",
+    "fetch_error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://quickbooks.intuit.com/learn-support/en-us/connect-bank/connect-a-bank-and-credit-card",
+    "domain": "quickbooks.intuit.com",
+    "company_name": "QuickBooks",
+    "name_source": "known_lookup",
+    "title": null,
+    "favicon_page": null,
+    "favicon_google": "https://www.google.com/s2/favicons?sz=32&domain=quickbooks.intuit.com",
+    "fetch_error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center",
+    "domain": "irs.gov",
+    "company_name": "IRS",
+    "name_source": "known_lookup",
+    "title": "Self-employed individuals tax center | Internal Revenue Serv",
+    "favicon_page": "https://irs.gov/themes/custom/pup_base/favicon.ico",
+    "favicon_google": "https://www.google.com/s2/favicons?sz=32&domain=irs.gov",
+    "fetch_error": null
+  },
+  {
+    "url": "https://www.forbes.com/advisor/business/software/best-accounting-software/",
+    "domain": "forbes.com",
+    "company_name": "Forbes",
+    "name_source": "known_lookup",
+    "title": null,
+    "favicon_page": null,
+    "favicon_google": "https://www.google.com/s2/favicons?sz=32&domain=forbes.com",
+    "fetch_error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.investopedia.com/best-accounting-software-5069679",
+    "domain": "investopedia.com",
+    "company_name": "Investopedia",
+    "name_source": "known_lookup",
+    "title": null,
+    "favicon_page": null,
+    "favicon_google": "https://www.google.com/s2/favicons?sz=32&domain=investopedia.com",
+    "fetch_error": "HTTP Error 402: Payment Required"
+  },
+  {
+    "url": "https://www.sba.gov/business-guide/manage-your-business/manage-your-finances",
+    "domain": "sba.gov",
+    "company_name": "U.S. Small Business Administration",
+    "name_source": "known_lookup",
+    "title": "Manage your finances | U.S. Small Business Administration",
+    "favicon_page": "https://sba.gov/themes/custom/sba/favicon.ico",
+    "favicon_google": "https://www.google.com/s2/favicons?sz=32&domain=sba.gov",
+    "fetch_error": null
+  },
+  {
+    "url": "https://www.cnbc.com/small-business/",
+    "domain": "cnbc.com",
+    "company_name": "CNBC",
+    "name_source": "og:site_name",
+    "title": null,
+    "favicon_page": "https://fm.cnbc.com/applications/cnbc.com/resources/img/CNBC_LOGO_FAVICON_1C_KO_RGB.ico",
+    "favicon_google": "https://www.google.com/s2/favicons?sz=32&domain=cnbc.com",
+    "fetch_error": null
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/QuickBooks",
+    "domain": "en.wikipedia.org",
+    "company_name": "Wikipedia",
+    "name_source": "known_lookup",
+    "title": "QuickBooks - Wikipedia",
+    "favicon_page": "https://en.wikipedia.org/static/favicon/wikipedia.ico",
+    "favicon_google": "https://www.google.com/s2/favicons?sz=32&domain=en.wikipedia.org",
+    "fetch_error": null
+  }
+]

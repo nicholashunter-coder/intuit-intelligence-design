@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1680" viewBox="0 0 1440 1680">
+  <style>
+    text { font-family: Inter, -apple-system, system-ui, sans-serif; }
+    .title { font-size: 22px; font-weight: 700; fill: #1a1a1a; }
+    .subtitle { font-size: 12px; font-weight: 500; fill: #888; letter-spacing: 0.06em; }
+    .option-num { font-size: 11px; font-weight: 700; fill: #888; letter-spacing: 0.08em; }
+    .option-title { font-size: 15px; font-weight: 700; fill: #1a1a1a; }
+    .body { font-size: 14px; font-weight: 400; fill: #333; }
+    .source-super { font-size: 10px; font-weight: 700; fill: #2563eb; }
+    .source-domain { font-size: 13px; font-weight: 400; fill: #2563eb; }
+    .source-company { font-size: 13px; font-weight: 500; fill: #2563eb; }
+    .chip-text { font-size: 11px; font-weight: 600; fill: #2563eb; }
+    .pro { font-size: 11px; font-weight: 400; fill: #16a34a; }
+    .con { font-size: 11px; font-weight: 400; fill: #dc2626; }
+    .label { font-size: 10px; font-weight: 700; fill: #aaa; letter-spacing: 0.06em; }
+    .weight-label { font-size: 10px; font-weight: 600; fill: #888; }
+    .divider { stroke: #e5e5e5; stroke-width: 1; }
+    .card { fill: #fafafa; stroke: #e5e5e5; stroke-width: 1; }
+    .chip-bg { fill: #eff6ff; stroke: #bfdbfe; stroke-width: 1; }
+    .favicon-box { fill: #f3f4f6; stroke: #d1d5db; stroke-width: 1; }
+  </style>
+
+  <rect width="1440" height="1680" fill="#ffffff"/>
+
+  <!-- Header -->
+  <text x="60" y="44" class="title">In-line Source Treatment Options</text>
+  <text x="60" y="66" class="subtitle">WEB SOURCES MVP  VISUAL WEIGHT COMPARISON</text>
+
+  <!-- Scale bar -->
+  <text x="60" y="100" class="weight-label">LEAST VISUAL WEIGHT</text>
+  <line x1="220" y1="96" x2="1220" y2="96" stroke="#e5e5e5" stroke-width="2"/>
+  <text x="1240" y="100" class="weight-label">MOST</text>
+
+  <line x1="60" y1="118" x2="1380" y2="118" class="divider"/>
+
+  <!-- ==================== OPTION 1 ==================== -->
+  <text x="60" y="152" class="option-num">OPTION 1</text>
+  <text x="60" y="172" class="option-title">Superscript Number</text>
+
+  <!-- Example card -->
+  <rect x="60" y="188" width="580" height="100" rx="8" class="card"/>
+  <text x="80" y="220" class="body">Based on your Q3 data, revenue increased 12%</text>
+  <text x="476" y="212" class="source-super">[1]</text>
+  <text x="80" y="244" class="body">compared to the same period last year.</text>
+  <text x="365" y="236" class="source-super">[2]</text>
+  <text x="80" y="268" class="body">Tax deductions may apply under Section 179.</text>
+  <text x="428" y="260" class="source-super">[3]</text>
+
+  <!-- Pros/cons -->
+  <rect x="680" y="188" width="700" height="100" rx="8" class="card"/>
+  <text x="700" y="214" class="label">PROS</text>
+  <text x="700" y="232" class="pro">Minimal footprint. Scales to 10+ sources. Proven pattern (Perplexity, Gemini).</text>
+  <text x="700" y="254" class="label">CONS</text>
+  <text x="700" y="272" class="con">No brand signal. Easy to miss. User must hover/click to learn source.</text>
+
+  <line x1="60" y1="314" x2="1380" y2="314" class="divider"/>
+
+  <!-- ==================== OPTION 2 ==================== -->
+  <text x="60" y="348" class="option-num">OPTION 2</text>
+  <text x="60" y="368" class="option-title">Domain Name Text</text>
+
+  <rect x="60" y="384" width="580" height="100" rx="8" class="card"/>
+  <text x="80" y="416" class="body">Based on your Q3 data, revenue increased 12%</text>
+  <text x="80" y="440" class="source-domain">(quickbooks.intuit.com)</text>
+  <text x="260" y="440" class="body"> compared to last year.</text>
+  <text x="80" y="464" class="body">Tax deductions may apply under Section 179.</text>
+  <text x="428" y="464" class="source-domain">(irs.gov)</text>
+
+  <rect x="680" y="384" width="700" height="100" rx="8" class="card"/>
+  <text x="700" y="410" class="label">PROS</text>
+  <text x="700" y="428" class="pro">Immediately shows source. No interaction needed. ChatGPT-familiar pattern.</text>
+  <text x="700" y="450" class="label">CONS</text>
+  <text x="700" y="468" class="con">Takes horizontal space. Long domains get messy. Feels technical, not authoritative.</text>
+
+  <line x1="60" y1="510" x2="1380" y2="510" class="divider"/>
+
+  <!-- ==================== OPTION 3 ==================== -->
+  <text x="60" y="544" class="option-num">OPTION 3</text>
+  <text x="60" y="564" class="option-title">Domain Chip / Badge</text>
+
+  <rect x="60" y="580" width="580" height="100" rx="8" class="card"/>
+  <text x="80" y="614" class="body">Based on your Q3 data, revenue increased 12%</text>
+  <rect x="80" y="626" width="128" height="22" rx="11" class="chip-bg"/>
+  <text x="96" y="641" class="chip-text">quickbooks.intuit.com</text>
+  <text x="216" y="641" class="body"> compared to last year.</text>
+  <text x="80" y="666" class="body">Tax deductions may apply under Section 179.</text>
+  <rect x="428" y="652" width="56" height="22" rx="11" class="chip-bg"/>
+  <text x="440" y="667" class="chip-text">irs.gov</text>
+
+  <rect x="680" y="580" width="700" height="100" rx="8" class="card"/>
+  <text x="700" y="606" class="label">PROS</text>
+  <text x="700" y="624" class="pro">Clear clickable affordance. Modern look. Distinct from body text.</text>
+  <text x="700" y="646" class="label">CONS</text>
+  <text x="700" y="664" class="con">Multiple chips in one paragraph can clutter. Still uses domain, not company name.</text>
+
+  <line x1="60" y1="706" x2="1380" y2="706" class="divider"/>
+
+  <!-- ==================== OPTION 4 ==================== -->
+  <text x="60" y="740" class="option-num">OPTION 4</text>
+  <text x="60" y="760" class="option-title">Company Name Text</text>
+
+  <rect x="60" y="776" width="580" height="100" rx="8" class="card"/>
+  <text x="80" y="808" class="body">Based on your Q3 data, revenue increased 12%</text>
+  <text x="80" y="832" class="source-company">(QuickBooks)</text>
+  <text x="168" y="832" class="body"> compared to the same period last year.</text>
+  <text x="80" y="856" class="body">Tax deductions may apply under Section 179.</text>
+  <text x="428" y="856" class="source-company">(IRS)</text>
+
+  <rect x="680" y="776" width="700" height="100" rx="8" class="card"/>
+  <text x="700" y="802" class="label">PROS</text>
+  <text x="700" y="820" class="pro">Reads naturally. Feels editorial / legitimate. Short names are compact.</text>
+  <text x="700" y="842" class="label">CONS</text>
+  <text x="700" y="860" class="con">Company names vary in length. May need truncation for long names.</text>
+
+  <line x1="60" y1="902" x2="1380" y2="902" class="divider"/>
+
+  <!-- ==================== OPTION 5 ==================== -->
+  <text x="60" y="936" class="option-num">OPTION 5</text>
+  <text x="60" y="956" class="option-title">Company Name Chip</text>
+
+  <rect x="60" y="972" width="580" height="100" rx="8" class="card"/>
+  <text x="80" y="1006" class="body">Based on your Q3 data, revenue increased 12%</text>
+  <rect x="80" y="1018" width="80" height="22" rx="11" class="chip-bg"/>
+  <text x="96" y="1033" class="chip-text">QuickBooks</text>
+  <text x="168" y="1033" class="body"> compared to the same period last year.</text>
+  <text x="80" y="1058" class="body">Tax deductions may apply under Section 179.</text>
+  <rect x="428" y="1044" width="36" height="22" rx="11" class="chip-bg"/>
+  <text x="436" y="1059" class="chip-text">IRS</text>
+
+  <rect x="680" y="972" width="700" height="100" rx="8" class="card"/>
+  <text x="700" y="998" class="label">PROS</text>
+  <text x="700" y="1016" class="pro">Legitimate + clickable affordance. Compact for short names. Best balance of trust + weight.</text>
+  <text x="700" y="1038" class="label">CONS</text>
+  <text x="700" y="1056" class="con">Long company names make big chips. May need short-name system.</text>
+
+  <line x1="60" y1="1098" x2="1380" y2="1098" class="divider"/>
+
+  <!-- ==================== OPTION 6 ==================== -->
+  <text x="60" y="1132" class="option-num">OPTION 6</text>
+  <text x="60" y="1152" class="option-title">Favicon + Company Name Chip</text>
+
+  <rect x="60" y="1168" width="580" height="100" rx="8" class="card"/>
+  <text x="80" y="1202" class="body">Based on your Q3 data, revenue increased 12%</text>
+  <rect x="80" y="1214" width="98" height="22" rx="11" class="chip-bg"/>
+  <rect x="84" y="1218" width="14" height="14" rx="3" class="favicon-box"/>
+  <text x="103" y="1229" class="chip-text">QuickBooks</text>
+  <text x="186" y="1229" class="body"> compared to last year.</text>
+  <text x="80" y="1254" class="body">Tax deductions may apply under Section 179.</text>
+  <rect x="428" y="1240" width="54" height="22" rx="11" class="chip-bg"/>
+  <rect x="432" y="1244" width="14" height="14" rx="3" class="favicon-box"/>
+  <text x="451" y="1255" class="chip-text">IRS</text>
+
+  <rect x="680" y="1168" width="700" height="100" rx="8" class="card"/>
+  <text x="700" y="1194" class="label">PROS</text>
+  <text x="700" y="1212" class="pro">Maximum brand recognition. Favicon is instantly scannable. Most premium feel.</text>
+  <text x="700" y="1234" class="label">CONS</text>
+  <text x="700" y="1252" class="con">Heaviest visual weight. Favicon loading adds complexity. Fallback needed if icon fails.</text>
+
+  <line x1="60" y1="1294" x2="1380" y2="1294" class="divider"/>
+
+  <!-- ==================== OPTION 7 ==================== -->
+  <text x="60" y="1328" class="option-num">OPTION 7</text>
+  <text x="60" y="1348" class="option-title">Favicon Only</text>
+
+  <rect x="60" y="1364" width="580" height="100" rx="8" class="card"/>
+  <text x="80" y="1398" class="body">Based on your Q3 data, revenue increased 12%</text>
+  <rect x="476" y="1388" width="18" height="18" rx="4" class="favicon-box"/>
+  <text x="80" y="1424" class="body">compared to the same period last year.</text>
+  <rect x="356" y="1414" width="18" height="18" rx="4" class="favicon-box"/>
+  <text x="80" y="1450" class="body">Tax deductions may apply under Section 179.</text>
+  <rect x="428" y="1440" width="18" height="18" rx="4" class="favicon-box"/>
+
+  <rect x="680" y="1364" width="700" height="100" rx="8" class="card"/>
+  <text x="700" y="1390" class="label">PROS</text>
+  <text x="700" y="1408" class="pro">Extremely compact. Brand recognition without text. Scales well visually.</text>
+  <text x="700" y="1430" class="label">CONS</text>
+  <text x="700" y="1448" class="con">Not all favicons are recognizable. Accessibility concern (no text). Unclear for lesser-known sources.</text>
+
+  <!-- Footer -->
+  <line x1="60" y1="1500" x2="1380" y2="1500" class="divider"/>
+
+  <rect x="60" y="1520" width="1320" height="130" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="80" y="1548" class="option-num">DESIGN PRINCIPLES</text>
+  <text x="80" y="1572" class="body">1. Signal, don't explain  the marker says "this is sourced," detail lives on hover / sources section</text>
+  <text x="80" y="1594" class="body">2. Don't compete with the response  sources are discoverable, not dominant</text>
+  <text x="80" y="1616" class="body">3. Scale gracefully  must work with 1 source and 12 sources</text>
+  <text x="80" y="1638" class="body">4. Earn trust passively  presence of markers builds confidence even if never clicked</text>
+</svg>
