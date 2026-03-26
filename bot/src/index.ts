@@ -36,8 +36,12 @@ app.event('app_mention', async ({ event, say }) => {
         .map(s => `• <${s.url}|${s.title}${s.section ? ` > ${s.section}` : ''}>`)
         .join('\n');
 
+      const header = config.useLLM
+        ? result.response
+        : `Here's what I found in the docs for: _"${question}"_\n\n${result.response}`;
+
       await say({
-        text: `${result.response}\n\n*Sources:*\n${sourceLinks}`,
+        text: `${header}\n\n*View in docs:*\n${sourceLinks}`,
         thread_ts: event.ts,
       });
     } else {

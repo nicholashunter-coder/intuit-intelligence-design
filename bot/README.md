@@ -1,13 +1,18 @@
 # Sources Bot
 
-A Slack bot that answers questions from the Sources design documentation using an LLM. When it can't find an answer, it escalates to team members and offers to add their responses to the docs via GitHub PR.
+A Slack bot that answers questions from the Sources design documentation. Works in two modes:
+
+- **Search mode (MVP, no API key)** — finds relevant doc sections by keyword and posts them directly
+- **LLM mode (with API key)** — generates polished answers using an LLM grounded in doc content
+
+When the bot can't find an answer, it escalates to team members. When someone answers in the thread, the bot offers to add the Q&A to the documentation via a GitHub PR.
 
 ## Setup
 
 ### 1. Create a Slack App
 
 1. Go to [api.slack.com/apps](https://api.slack.com/apps) and create a new app
-2. Enable **Socket Mode** (Settings → Socket Mode → toggle on) and generate an App-Level Token with `connections:write` scope
+2. Enable **Socket Mode** (Settings > Socket Mode > toggle on) and generate an App-Level Token with `connections:write` scope
 3. Add these **Bot Token Scopes** (OAuth & Permissions):
    - `app_mentions:read`
    - `chat:write`
@@ -27,13 +32,15 @@ A Slack bot that answers questions from the Sources design documentation using a
 cp .env.example .env
 ```
 
-Fill in:
+Required:
 - `SLACK_BOT_TOKEN` — from OAuth & Permissions (starts with `xoxb-`)
 - `SLACK_APP_TOKEN` — the App-Level Token (starts with `xapp-`)
 - `SLACK_SIGNING_SECRET` — from Basic Information
-- `OPENAI_API_KEY` — from platform.openai.com
-- `GITHUB_TOKEN` — a PAT with `repo` scope
+- `GITHUB_TOKEN` — a PAT with `repo` scope (for creating PRs)
 - `ESCALATION_USERS` — comma-separated Slack user IDs to tag when the bot can't answer
+
+Optional (enables LLM mode):
+- `OPENAI_API_KEY` — from platform.openai.com (or any OpenAI-compatible endpoint)
 
 ### 3. Run
 
@@ -46,8 +53,10 @@ npm run dev
 
 Mention the bot in any channel it's been invited to:
 
-- `@SourcesBot What are the two source categories?`
-- `@SourcesBot How long do QB report links last?`
-- `@SourcesBot refresh` — re-indexes the documentation
+- `@SourcesBot What are the two source categories?` — searches docs and returns relevant sections
+- `@SourcesBot How long do QB report links last?` — finds the Clarity expiry info
+- `@SourcesBot refresh` — re-indexes the documentation after you push changes
 
-When the bot can't answer, it tags the configured team members. When someone replies in the thread, the bot offers to create a PR adding the Q&A to the FAQ page.
+### Upgrading to LLM mode
+
+When you get an API key, just add `OPENAI_API_KEY` to your `.env` and uncomment the LLM block in `src/answer.ts`. The bot will start generating conversational answers instead of raw doc excerpts. Also run `npm install openai` to add the dependency.

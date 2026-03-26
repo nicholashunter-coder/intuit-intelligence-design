@@ -10,7 +10,7 @@ export const config = {
     signingSecret: process.env.SLACK_SIGNING_SECRET!,
   },
   openai: {
-    apiKey: process.env.OPENAI_API_KEY!,
+    apiKey: process.env.OPENAI_API_KEY || '',
   },
   github: {
     token: process.env.GITHUB_TOKEN!,
@@ -20,4 +20,5 @@ export const config = {
   docsPath: resolve(__dirname, '../../content/docs'),
   siteUrl: 'https://nicholashunter-coder.github.io/intuit-intelligence-design',
   escalationUsers: (process.env.ESCALATION_USERS || '').split(',').filter(Boolean),
+  useLLM: !!process.env.OPENAI_API_KEY,
 };
