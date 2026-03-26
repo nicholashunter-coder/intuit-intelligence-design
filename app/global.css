@@ -57,7 +57,7 @@
 
 aside[data-fd-sidebar] [data-fd-sidebar-content] a {
   font-size: 13px !important;
-  padding: 6px 12px !important;
+  padding: 6px 8px !important;
   border-radius: 6px;
   margin: 1px 0;
 }
@@ -93,13 +93,23 @@ aside[data-fd-sidebar] [data-fd-collapsible-trigger] {
   font-size: 13px !important;
   font-weight: 500 !important;
   color: #fafafa !important;
-  padding: 6px 12px !important;
+  padding: 6px 8px !important;
   margin-top: 16px;
 }
 
-/* Sidebar content padding: 16px 8px */
+/* Sidebar content padding: tight left */
 aside[data-fd-sidebar] [data-fd-sidebar-content] {
-  padding: 16px 8px !important;
+  padding: 12px 4px 12px 4px !important;
+}
+
+/* Remove any extra inner padding from sidebar containers */
+aside[data-fd-sidebar] [data-fd-sidebar-content] > div {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+aside[data-fd-sidebar] {
+  padding-left: 0 !important;
 }
 
 /* ================================================
