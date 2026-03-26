@@ -1,3 +1,84 @@
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
+
+:root {
+  --fd-sidebar-width: 220px;
+}
+
+/* Tighter sidebar */
+:is([data-theme="dark"]) {
+  --fd-background: 0 0% 3.5%;
+  --fd-card: 0 0% 5.5%;
+  --fd-muted: 0 0% 8%;
+  --fd-border: 0 0% 10%;
+}
+
+/* Sidebar density */
+.fd-sidebar nav {
+  font-size: 0.8125rem;
+}
+
+.fd-sidebar nav a {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+.fd-sidebar nav p {
+  font-size: 0.8125rem;
+}
+
+/* Tighter card links on landing page */
+.fd-card {
+  padding: 0.875rem 1rem;
+}
+
+/* More compact headings */
+article h1 {
+  font-size: 1.875rem !important;
+  letter-spacing: -0.04em;
+}
+
+article h2 {
+  font-size: 1.125rem !important;
+  letter-spacing: -0.02em;
+  margin-top: 1.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid hsl(var(--fd-border));
+}
+
+article h3 {
+  font-size: 1rem !important;
+  letter-spacing: -0.01em;
+}
+
+/* Tighter body text */
+article p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* Tighter table cells */
+article table {
+  font-size: 0.8125rem;
+}
+
+article table th {
+  padding: 0.5rem 0.875rem;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+article table td {
+  padding: 0.5rem 0.875rem;
+}
+
+/* TOC density */
+.fd-toc a {
+  font-size: 0.75rem;
+}
+
+/* Compact navbar */
+nav.fd-navbar {
+  font-size: 0.8125rem;
+}
