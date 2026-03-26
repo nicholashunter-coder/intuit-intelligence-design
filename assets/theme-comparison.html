@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docs Theme Comparison</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Inter, -apple-system, system-ui, sans-serif;
+      background: #0a0a0a;
+      color: #fafafa;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 2px;
+      padding: 16px 24px 0;
+      background: #0a0a0a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .tab {
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      transition: all 0.2s;
+      position: relative;
+      bottom: -1px;
+    }
+    .tab:hover { color: #999; }
+    .tab.active {
+      color: #fafafa;
+      background: #111;
+      border-color: #1a1a1a;
+    }
+    .tab .label { display: block; }
+    .tab .desc { font-size: 10px; font-weight: 400; color: #555; margin-top: 2px; }
+    .tab.active .desc { color: #777; }
+
+    .preview-area {
+      flex: 1;
+      overflow: hidden;
+      background: #111;
+    }
+    .preview {
+      display: none;
+      height: 100%;
+      overflow-y: auto;
+    }
+    .preview.active { display: flex; }
+
+    /* ============================================ */
+    /* THEME A: Docusaurus Classic (current)        */
+    /* ============================================ */
+    .theme-a {
+      --bg: #1b1b1d;
+      --sidebar-bg: #1b1b1d;
+      --border: #303033;
+      --text: #e3e3e3;
+      --text-muted: #a1a1a6;
+      --primary: #4a9eff;
+      --nav-bg: #242526;
+      --card-bg: #242526;
+    }
+    .theme-a .mock-nav {
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .theme-a .mock-nav .logo { font-weight: 700; font-size: 14px; color: var(--text); }
+    .theme-a .mock-nav .nav-link { font-size: 13px; color: var(--text-muted); }
+    .theme-a .mock-nav .search {
+      margin-left: auto;
+      background: #1b1b1d;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: #666;
+      width: 180px;
+    }
+    .theme-a .content-area {
+      display: flex;
+      flex: 1;
+      background: var(--bg);
+    }
+    .theme-a .sidebar {
+      width: 240px;
+      padding: 20px 16px;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .theme-a .sidebar .cat {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 16px 0 6px;
+      letter-spacing: 0.05em;
+    }
+    .theme-a .sidebar .cat:first-child { margin-top: 0; }
+    .theme-a .sidebar .item {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .theme-a .sidebar .item.active {
+      color: var(--primary);
+      background: rgba(74, 158, 255, 0.08);
+    }
+    .theme-a .main {
+      flex: 1;
+      padding: 32px 48px;
+      max-width: 720px;
+    }
+    .theme-a .main h1 { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+    .theme-a .main p { font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 16px; }
+    .theme-a .main h2 { font-size: 18px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+    .theme-a .main table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+    .theme-a .main th { text-align: left; padding: 8px 12px; background: var(--card-bg); color: var(--text-muted); border: 1px solid var(--border); font-weight: 600; }
+    .theme-a .main td { padding: 8px 12px; border: 1px solid var(--border); color: var(--text-muted); }
+    .theme-a .toc {
+      width: 180px;
+      padding: 32px 16px;
+      flex-shrink: 0;
+    }
+    .theme-a .toc .toc-title { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+    .theme-a .toc .toc-item { font-size: 12px; color: var(--text-muted); padding: 3px 0; cursor: pointer; }
+    .theme-a .toc .toc-item.active { color: var(--primary); }
+
+    /* ============================================ */
+    /* THEME B: Docusaurus Polished                 */
+    /* ============================================ */
+    .theme-b {
+      --bg: #09090b;
+      --sidebar-bg: #09090b;
+      --border: #1c1c22;
+      --text: #fafafa;
+      --text-muted: #a1a1aa;
+      --primary: #3b82f6;
+      --nav-bg: #09090b;
+      --card-bg: #111113;
+      --hover: #15151a;
+    }
+    .theme-b .mock-nav {
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    .theme-b .mock-nav .logo { font-weight: 700; font-size: 14px; color: var(--text); letter-spacing: -0.02em; }
+    .theme-b .mock-nav .nav-link { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+    .theme-b .mock-nav .search {
+      margin-left: auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 12px;
+      color: #555;
+      width: 200px;
+    }
+    .theme-b .mock-nav .kbd {
+      font-size: 10px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: #555;
+      margin-left: 8px;
+    }
+    .theme-b .content-area {
+      display: flex;
+      flex: 1;
+      background: var(--bg);
+    }
+    .theme-b .sidebar {
+      width: 240px;
+      padding: 20px 12px;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .theme-b .sidebar .cat {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 20px 0 4px;
+      padding: 0 10px;
+    }
+    .theme-b .sidebar .cat:first-child { margin-top: 0; }
+    .theme-b .sidebar .item {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .theme-b .sidebar .item:hover { background: var(--hover); color: var(--text); }
+    .theme-b .sidebar .item.active {
+      color: var(--text);
+      background: var(--hover);
+      font-weight: 500;
+    }
+    .theme-b .sidebar .item.active::before {
+      content: '';
+      display: inline-block;
+      width: 2px;
+      height: 14px;
+      background: var(--primary);
+      border-radius: 1px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .theme-b .main {
+      flex: 1;
+      padding: 40px 56px;
+      max-width: 720px;
+    }
+    .theme-b .main h1 { font-size: 30px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.03em; }
+    .theme-b .main .subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+    .theme-b .main h2 { font-size: 17px; font-weight: 600; color: var(--text); margin: 28px 0 10px; letter-spacing: -0.01em; }
+    .theme-b .main p { font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 16px; }
+    .theme-b .main table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+    .theme-b .main th { text-align: left; padding: 10px 14px; background: var(--card-bg); color: var(--text); border-bottom: 1px solid var(--border); font-weight: 600; }
+    .theme-b .main td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+    .theme-b .main .status { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 10px; }
+    .theme-b .main .status.progress { background: rgba(59,130,246,0.12); color: #60a5fa; }
+    .theme-b .main .status.draft { background: rgba(161,161,170,0.12); color: #a1a1aa; }
+    .theme-b .main .status.planned { background: rgba(161,161,170,0.08); color: #666; }
+    .theme-b .toc {
+      width: 180px;
+      padding: 40px 16px;
+      flex-shrink: 0;
+    }
+    .theme-b .toc .toc-title { font-size: 11px; font-weight: 600; color: #555; margin-bottom: 10px; letter-spacing: 0.03em; }
+    .theme-b .toc .toc-item { font-size: 12px; color: #555; padding: 4px 0; cursor: pointer; transition: color 0.15s; }
+    .theme-b .toc .toc-item:hover { color: var(--text-muted); }
+    .theme-b .toc .toc-item.active { color: var(--text); }
+
+    /* ============================================ */
+    /* THEME C: shadcn / Fumadocs                   */
+    /* ============================================ */
+    .theme-c {
+      --bg: #09090b;
+      --sidebar-bg: #0c0c0e;
+      --border: #1a1a1f;
+      --text: #fafafa;
+      --text-muted: #71717a;
+      --primary: #fafafa;
+      --accent: #3b82f6;
+      --nav-bg: rgba(9,9,11,0.8);
+      --card-bg: #111113;
+      --hover: #18181b;
+    }
+    .theme-c .mock-nav {
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+    .theme-c .mock-nav .logo {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+      letter-spacing: -0.04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .theme-c .mock-nav .logo-icon {
+      width: 20px;
+      height: 20px;
+      background: var(--text);
+      border-radius: 5px;
+    }
+    .theme-c .mock-nav .nav-link { font-size: 13px; color: var(--text-muted); font-weight: 400; }
+    .theme-c .mock-nav .nav-link:hover { color: var(--text); }
+    .theme-c .mock-nav .search {
+      margin-left: auto;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      width: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .theme-c .mock-nav .search .kbd {
+      font-size: 10px;
+      background: var(--hover);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: var(--text-muted);
+    }
+    .theme-c .content-area {
+      display: flex;
+      flex: 1;
+      background: var(--bg);
+    }
+    .theme-c .sidebar {
+      width: 220px;
+      padding: 16px 8px;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+      background: var(--sidebar-bg);
+    }
+    .theme-c .sidebar .cat {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 20px 0 2px;
+      padding: 6px 12px;
+    }
+    .theme-c .sidebar .cat:first-child { margin-top: 4px; }
+    .theme-c .sidebar .item {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.1s;
+      margin: 1px 0;
+    }
+    .theme-c .sidebar .item:hover { background: var(--hover); color: var(--text-muted); }
+    .theme-c .sidebar .item.active {
+      color: var(--accent);
+      background: rgba(59,130,246,0.08);
+      font-weight: 500;
+    }
+    .theme-c .main {
+      flex: 1;
+      padding: 40px 56px;
+      max-width: 720px;
+    }
+    .theme-c .main .breadcrumb { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+    .theme-c .main .breadcrumb span { color: var(--accent); }
+    .theme-c .main h1 { font-size: 32px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.04em; }
+    .theme-c .main .subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.5; }
+    .theme-c .main h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 32px 0 12px;
+      letter-spacing: -0.02em;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .theme-c .main p { font-size: 14px; line-height: 1.8; color: var(--text-muted); margin-bottom: 16px; }
+    .theme-c .main table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .theme-c .main th { text-align: left; padding: 10px 16px; background: var(--hover); color: var(--text); font-weight: 500; font-size: 12px; }
+    .theme-c .main td { padding: 10px 16px; border-top: 1px solid var(--border); color: var(--text-muted); }
+    .theme-c .main .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+    .theme-c .main .link-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.15s;
+      background: var(--bg);
+    }
+    .theme-c .main .link-card:hover { background: var(--hover); border-color: #2a2a30; }
+    .theme-c .main .link-card .card-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .theme-c .main .link-card .card-desc { font-size: 12px; color: var(--text-muted); }
+    .theme-c .main .link-card .arrow { float: right; color: var(--text-muted); font-size: 14px; }
+    .theme-c .toc {
+      width: 180px;
+      padding: 40px 16px;
+      flex-shrink: 0;
+    }
+    .theme-c .toc .toc-title { font-size: 12px; font-weight: 500; color: var(--text-muted); margin-bottom: 12px; }
+    .theme-c .toc .toc-item { font-size: 12px; color: var(--text-muted); padding: 4px 0 4px 12px; cursor: pointer; border-left: 1px solid var(--border); transition: all 0.15s; }
+    .theme-c .toc .toc-item:hover { color: var(--text); }
+    .theme-c .toc .toc-item.active { color: var(--text); border-left-color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<div class="tab-bar">
+  <div class="tab active" onclick="showTheme('a', this)">
+    <span class="label">A — Docusaurus Classic</span>
+    <span class="desc">Your current setup</span>
+  </div>
+  <div class="tab" onclick="showTheme('b', this)">
+    <span class="label">B — Docusaurus Polished</span>
+    <span class="desc">Same framework, refined CSS</span>
+  </div>
+  <div class="tab" onclick="showTheme('c', this)">
+    <span class="label">C — Fumadocs / shadcn</span>
+    <span class="desc">Next.js + Tailwind + shadcn/ui</span>
+  </div>
+</div>
+
+<!-- THEME A: Docusaurus Classic -->
+<div class="preview theme-a active" id="theme-a">
+  <div style="display:flex;flex-direction:column;width:100%;height:100%;">
+    <div class="mock-nav">
+      <span class="logo">Intuit Intelligence Design</span>
+      <span class="nav-link">Docs</span>
+      <span class="nav-link">GitHub</span>
+      <span class="search">Search docs...</span>
+    </div>
+    <div class="content-area">
+      <div class="sidebar">
+        <div class="cat">Getting Started</div>
+        <div class="item active">Introduction</div>
+        <div class="cat">Design</div>
+        <div class="item">Inline Treatments</div>
+        <div class="item">Components</div>
+        <div class="item">Design Tokens</div>
+        <div class="cat">Prototypes</div>
+        <div class="item">Card Interactions</div>
+        <div class="cat">Research</div>
+        <div class="item">Source Metadata</div>
+        <div class="cat">FAQ</div>
+        <div class="item">FAQ</div>
+      </div>
+      <div class="main">
+        <h1>Getting Started</h1>
+        <p>Design documentation for source treatments in Intuit Intelligence experiences.</p>
+        <p>This site covers how we display, attribute, and interact with external sources surfaced by AI — from inline citations to expanded card views.</p>
+        <h2>Quickstart</h2>
+        <table>
+          <thead><tr><th>Area</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>Inline Source Treatments</td><td>Visual weight options for in-line citations</td></tr>
+            <tr><td>Source Metadata</td><td>How we resolve domains, favicons, and company names</td></tr>
+            <tr><td>Card Interactions</td><td>Interactive prototype for source card expand/collapse</td></tr>
+            <tr><td>Design Tokens</td><td>Colors, spacing, and typography</td></tr>
+          </tbody>
+        </table>
+        <h2>Status</h2>
+        <table>
+          <thead><tr><th>Milestone</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Inline treatment exploration</td><td>In progress</td></tr>
+            <tr><td>Source metadata resolution</td><td>In progress</td></tr>
+            <tr><td>Card interaction prototype</td><td>In progress</td></tr>
+            <tr><td>Design tokens</td><td>Draft</td></tr>
+            <tr><td>Figma sync</td><td>Planned</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="toc">
+        <div class="toc-title">ON THIS PAGE</div>
+        <div class="toc-item active">Quickstart</div>
+        <div class="toc-item">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THEME B: Polished Docusaurus -->
+<div class="preview theme-b" id="theme-b">
+  <div style="display:flex;flex-direction:column;width:100%;height:100%;">
+    <div class="mock-nav">
+      <span class="logo">Intuit Intelligence Design</span>
+      <span class="nav-link">Docs</span>
+      <span class="nav-link">Storybook</span>
+      <span class="nav-link">Prototype</span>
+      <div class="search">Search documentation...<span class="kbd">⌘K</span></div>
+    </div>
+    <div class="content-area">
+      <div class="sidebar">
+        <div class="cat">Getting Started</div>
+        <div class="item active">Introduction</div>
+        <div class="cat">Design</div>
+        <div class="item">Inline Treatments</div>
+        <div class="item">Components</div>
+        <div class="item">Design Tokens</div>
+        <div class="cat">Prototypes</div>
+        <div class="item">Card Interactions</div>
+        <div class="cat">Research</div>
+        <div class="item">Source Metadata</div>
+        <div class="cat">FAQ</div>
+        <div class="item">FAQ</div>
+      </div>
+      <div class="main">
+        <h1>Getting Started</h1>
+        <p class="subtitle">Design documentation for source treatments in Intuit Intelligence experiences.</p>
+        <h2>Quickstart</h2>
+        <p>This site covers how we display, attribute, and interact with external sources surfaced by AI — from inline citations to expanded card views.</p>
+        <table>
+          <thead><tr><th>Area</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>Inline Source Treatments</td><td>Visual weight options for in-line citations</td></tr>
+            <tr><td>Source Metadata</td><td>How we resolve domains, favicons, and company names</td></tr>
+            <tr><td>Card Interactions</td><td>Interactive prototype for source card expand/collapse</td></tr>
+            <tr><td>Design Tokens</td><td>Colors, spacing, and typography</td></tr>
+          </tbody>
+        </table>
+        <h2>Status</h2>
+        <table>
+          <thead><tr><th>Milestone</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Inline treatment exploration</td><td><span class="status progress">In progress</span></td></tr>
+            <tr><td>Source metadata resolution</td><td><span class="status progress">In progress</span></td></tr>
+            <tr><td>Card interaction prototype</td><td><span class="status progress">In progress</span></td></tr>
+            <tr><td>Design tokens</td><td><span class="status draft">Draft</span></td></tr>
+            <tr><td>Figma sync</td><td><span class="status planned">Planned</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <div class="toc-item active">Quickstart</div>
+        <div class="toc-item">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THEME C: Fumadocs / shadcn -->
+<div class="preview theme-c" id="theme-c">
+  <div style="display:flex;flex-direction:column;width:100%;height:100%;">
+    <div class="mock-nav">
+      <div class="logo"><div class="logo-icon"></div> II Design</div>
+      <span class="nav-link">Documentation</span>
+      <span class="nav-link">Components</span>
+      <span class="nav-link">Prototypes</span>
+      <div class="search">Search documentation...<span class="kbd">⌘K</span></div>
+    </div>
+    <div class="content-area">
+      <div class="sidebar">
+        <div class="cat">Getting Started</div>
+        <div class="item active">Introduction</div>
+        <div class="cat">Design</div>
+        <div class="item">Inline Treatments</div>
+        <div class="item">Components</div>
+        <div class="item">Design Tokens</div>
+        <div class="cat">Prototypes</div>
+        <div class="item">Card Interactions</div>
+        <div class="cat">Research</div>
+        <div class="item">Source Metadata</div>
+        <div class="cat">FAQ</div>
+        <div class="item">FAQ</div>
+      </div>
+      <div class="main">
+        <div class="breadcrumb">Docs / <span>Getting Started</span></div>
+        <h1>Getting Started</h1>
+        <p class="subtitle">Design documentation for source treatments in Intuit Intelligence experiences.</p>
+        <div class="card-grid">
+          <div class="link-card">
+            <div class="card-title">Inline Treatments <span class="arrow">→</span></div>
+            <div class="card-desc">Visual weight options for citations</div>
+          </div>
+          <div class="link-card">
+            <div class="card-title">Source Metadata <span class="arrow">→</span></div>
+            <div class="card-desc">Domains, favicons, and company names</div>
+          </div>
+          <div class="link-card">
+            <div class="card-title">Card Interactions <span class="arrow">→</span></div>
+            <div class="card-desc">Expand/collapse prototype</div>
+          </div>
+          <div class="link-card">
+            <div class="card-title">Design Tokens <span class="arrow">→</span></div>
+            <div class="card-desc">Colors, spacing, and typography</div>
+          </div>
+        </div>
+        <h2>Status</h2>
+        <table>
+          <thead><tr><th>Milestone</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Inline treatment exploration</td><td>In progress</td></tr>
+            <tr><td>Source metadata resolution</td><td>In progress</td></tr>
+            <tr><td>Card interaction prototype</td><td>In progress</td></tr>
+            <tr><td>Design tokens</td><td>Draft</td></tr>
+            <tr><td>Figma sync</td><td>Planned</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <div class="toc-item active">Getting Started</div>
+        <div class="toc-item">Status</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showTheme(id, el) {
+    document.querySelectorAll('.preview').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('theme-' + id).classList.add('active');
+    el.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

@@ -1,5 +1,7 @@
 node_modules/
-build/
+.next/
+out/
 .docusaurus/
-.cache-loader/
+build/
 .DS_Store
+.fumadocs/
