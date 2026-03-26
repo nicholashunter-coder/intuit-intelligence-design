@@ -18,10 +18,18 @@
 
 :root {
   --fd-sidebar-width: 220px;
+  color-scheme: dark;
 }
 
-/* Override ALL Fumadocs dark mode colors with Theme C exact values */
-.dark {
+html,
+body {
+  background-color: #09090b;
+}
+
+/* Apply Theme C tokens both pre/post hydration to avoid theme flicker/misses. */
+:root,
+.dark,
+[data-theme='dark'] {
   --color-fd-background: #09090b;
   --color-fd-foreground: #fafafa;
   --color-fd-muted: #18181b;

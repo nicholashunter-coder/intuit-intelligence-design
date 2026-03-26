@@ -7,7 +7,10 @@ export function Provider({ children }: { children: ReactNode }) {
   return (
     <RootProvider
       theme={{
+        forcedTheme: 'dark',
         defaultTheme: 'dark',
+        enableSystem: false,
+        disableTransitionOnChange: true,
       }}
       search={{
         SearchDialog,

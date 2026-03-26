@@ -1,0 +1,43 @@
+---
+title: Sources Overview
+description: How source attribution works in Intuit Intelligence experiences.
+---
+
+Sources give customers transparency into where Intuit Intelligence answers come from. Every response that references data or external information surfaces its sources so customers can verify and explore further.
+
+## Source Categories
+
+There are two categories of sources:
+
+### QB Sources ("Your QuickBooks data")
+
+References to the customer's own QuickBooks data — reports, transactions, and documents.
+
+- Displayed with a QuickBooks icon and report name
+- Links open the referenced report directly
+- **Expiry constraint:** QB report links are built on Clarity, which expires after approximately **15 minutes**. After expiry, the link is marked "Link Expired" and the customer must re-run the query to get a fresh link.
+
+### Web Sources
+
+References to external web content used to inform the response — articles, help docs, and third-party resources.
+
+- Displayed with a favicon and source name (where available)
+- **V1 limitation:** Web sources currently show the **URL only** — no favicon or company name is resolved. This is a known gap targeted for a future release.
+
+## How Sources Appear
+
+Sources are shown as a collapsible section beneath the response:
+
+1. **Collapsed state** — a "N sources" link (e.g., "3 sources") that the customer can tap to expand
+2. **Expanded state** — a grouped list showing QB sources and Web sources separately
+3. **Dashboard context** — when Intelligence is docked as a side panel, sources appear inline in the panel
+
+See [What's Live](/docs/sources/whats-live) for screenshots of each state.
+
+## Key V1 Constraints
+
+| Constraint | Detail |
+|------------|--------|
+| Web source display | URL only — no favicon or company name |
+| QB link expiry | ~15 minutes (Clarity limitation) |
+| Source ordering | Grouped by category (QB first, then Web) |
