@@ -3,36 +3,56 @@
 @import 'fumadocs-ui/css/preset.css';
 
 /*
- * Theme C exact values:
- * --bg: #09090b | --sidebar-bg: #0c0c0e | --border: #1a1a1f
- * --text: #fafafa | --text-muted: #71717a | --accent: #3b82f6
- * --hover: #18181b | --card-bg: #111113
+ * Theme C palette (from theme-comparison.html):
+ *
+ *   --bg:         #09090b  → hsl(240, 10%, 3.9%)
+ *   --sidebar-bg: #0c0c0e  → hsl(240, 7.7%, 5.1%)
+ *   --border:     #1a1a1f  → hsl(240, 8.8%, 11.2%)
+ *   --text:       #fafafa  → hsl(0, 0%, 98%)
+ *   --text-muted: #71717a  → hsl(240, 3.8%, 46.1%)
+ *   --accent:     #3b82f6  → hsl(217, 91%, 60%)
+ *   --hover:      #18181b  → hsl(240, 5.9%, 10%)
+ *   --card-bg:    #111113  → hsl(240, 5.6%, 7.1%)
+ *   --nav-bg:     rgba(9,9,11,0.8)
  */
 
 :root {
   --fd-sidebar-width: 220px;
 }
 
-[data-theme="dark"] {
-  --fd-background: 240 6% 3.3%;
-  --fd-foreground: 0 0% 98%;
-  --fd-card: 240 8% 5%;
-  --fd-muted: 240 4% 46%;
-  --fd-muted-foreground: 240 4% 46%;
-  --fd-border: 240 8% 11%;
-  --fd-accent: 217 91% 60%;
-  --fd-accent-foreground: 0 0% 98%;
-  --fd-primary: 217 91% 60%;
-  --fd-ring: 217 91% 60%;
-  --fd-popover: 240 6% 6%;
-  --fd-secondary: 240 6% 10%;
+/* Override ALL Fumadocs dark mode colors with Theme C exact values */
+.dark {
+  --color-fd-background: #09090b;
+  --color-fd-foreground: #fafafa;
+  --color-fd-muted: #18181b;
+  --color-fd-muted-foreground: #71717a;
+  --color-fd-popover: #0c0c0e;
+  --color-fd-popover-foreground: #fafafa;
+  --color-fd-card: #111113;
+  --color-fd-card-foreground: #fafafa;
+  --color-fd-border: #1a1a1f;
+  --color-fd-primary: #fafafa;
+  --color-fd-primary-foreground: #09090b;
+  --color-fd-secondary: #18181b;
+  --color-fd-secondary-foreground: #fafafa;
+  --color-fd-accent: rgba(59, 130, 246, 0.12);
+  --color-fd-accent-foreground: #fafafa;
+  --color-fd-ring: #3b82f6;
+  --color-fd-overlay: rgba(0, 0, 0, 0.4);
+}
+
+/* Sidebar neutral overrides */
+.dark #nd-sidebar {
+  --color-fd-muted: #18181b;
+  --color-fd-secondary: #1a1a1f;
+  --color-fd-muted-foreground: #71717a;
 }
 
 /* ================================================
    SIDEBAR: 220px, #0c0c0e bg, 13px, flat items
    ================================================ */
-[data-theme="dark"] aside[data-fd-sidebar] {
-  background: #0c0c0e;
+.dark aside[data-fd-sidebar] {
+  background: #0c0c0e !important;
 }
 
 aside[data-fd-sidebar] [data-fd-sidebar-content] a {
@@ -48,19 +68,25 @@ aside[data-fd-sidebar] [data-fd-sidebar-content] [data-fd-sidebar-item] {
   font-weight: 500;
 }
 
+/* Active item: blue text + subtle blue bg */
 aside[data-fd-sidebar] a[data-active="true"] {
-  color: hsl(217 91% 60%) !important;
+  color: #3b82f6 !important;
   background: rgba(59, 130, 246, 0.08) !important;
   font-weight: 500;
 }
 
-/* Hide chevron arrows on sidebar folders for flat look */
+/* Inactive items: #71717a */
+.dark aside[data-fd-sidebar] a:not([data-active="true"]) {
+  color: #71717a;
+}
+
+/* Hide chevron arrows for flat look */
 aside[data-fd-sidebar] svg[data-icon="chevron"],
 aside[data-fd-sidebar] button[data-fd-collapsible-trigger] svg {
   display: none !important;
 }
 
-/* Category labels in sidebar: 13px, 500 weight, white */
+/* Category labels: 13px, 500 weight, #fafafa */
 aside[data-fd-sidebar] [data-fd-sidebar-content] > div > p,
 aside[data-fd-sidebar] [role="treeitem"] > p,
 aside[data-fd-sidebar] [data-fd-collapsible-trigger] {
@@ -71,20 +97,20 @@ aside[data-fd-sidebar] [data-fd-collapsible-trigger] {
   margin-top: 16px;
 }
 
-/* Sidebar padding: 16px 8px */
+/* Sidebar content padding: 16px 8px */
 aside[data-fd-sidebar] [data-fd-sidebar-content] {
   padding: 16px 8px !important;
 }
 
 /* ================================================
-   NAVBAR: blur bg, 13px, 12px 24px padding
+   NAVBAR: rgba(9,9,11,0.8) blur, #1a1a1f border
    ================================================ */
-[data-theme="dark"] header[data-fd-navbar],
-[data-theme="dark"] nav[data-fd-navbar] {
+.dark header[data-fd-navbar],
+.dark nav[data-fd-navbar] {
   background: rgba(9, 9, 11, 0.8) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid #1a1a1f;
+  border-bottom: 1px solid #1a1a1f !important;
 }
 
 header[data-fd-navbar] a,
@@ -94,25 +120,27 @@ nav[data-fd-navbar] button {
   font-size: 13px !important;
 }
 
-/* Navbar links: 400 weight, muted color */
-nav[data-fd-navbar] a[class*="nav"] {
-  font-weight: 400;
+/* Nav links: 400 weight, #71717a → #fafafa on hover */
+.dark nav[data-fd-navbar] a {
   color: #71717a;
+  font-weight: 400;
 }
-
-nav[data-fd-navbar] a[class*="nav"]:hover {
+.dark nav[data-fd-navbar] a:hover {
   color: #fafafa;
 }
 
-/* Logo: tight letter-spacing */
+/* Logo: 14px 700 -0.04em */
 [data-fd-navbar] [data-fd-nav-title] {
   letter-spacing: -0.04em;
   font-size: 14px !important;
   font-weight: 700;
 }
+.dark [data-fd-navbar] [data-fd-nav-title] {
+  color: #fafafa !important;
+}
 
 /* ================================================
-   CONTENT: 32px h1 -0.04em, 18px h2 + border
+   CONTENT: 32px h1, 18px h2 + border-bottom
    ================================================ */
 article h1,
 [data-fd-docs] h1 {
@@ -121,12 +149,18 @@ article h1,
   letter-spacing: -0.04em !important;
   margin-bottom: 8px !important;
 }
+.dark article h1,
+.dark [data-fd-docs] h1 {
+  color: #fafafa !important;
+}
 
 [data-fd-docs] [data-fd-docs-description] {
   font-size: 15px !important;
-  color: #71717a !important;
   margin-bottom: 32px !important;
   line-height: 1.5;
+}
+.dark [data-fd-docs] [data-fd-docs-description] {
+  color: #71717a !important;
 }
 
 article h2 {
@@ -138,6 +172,7 @@ article h2 {
   padding-bottom: 8px !important;
   border-bottom: 1px solid #1a1a1f;
 }
+.dark article h2 { color: #fafafa !important; }
 
 article h3 {
   font-size: 15px !important;
@@ -150,9 +185,13 @@ article li {
   font-size: 14px !important;
   line-height: 1.8;
 }
+.dark article p,
+.dark article li {
+  color: #71717a;
+}
 
 /* ================================================
-   TABLES: 13px, 10px 16px cells, rounded outer border
+   TABLES: 13px, #18181b header, #1a1a1f borders, rounded
    ================================================ */
 article table {
   font-size: 13px !important;
@@ -169,9 +208,10 @@ article table th {
   font-weight: 500 !important;
   font-size: 12px !important;
   border-bottom: 1px solid #1a1a1f !important;
+  border-left: none !important;
+  border-right: none !important;
 }
-
-[data-theme="dark"] article table th {
+.dark article table th {
   background: #18181b !important;
   color: #fafafa !important;
 }
@@ -179,25 +219,19 @@ article table th {
 article table td {
   padding: 10px 16px !important;
   border-top: 1px solid #1a1a1f !important;
-}
-
-[data-theme="dark"] article table td {
-  color: #71717a;
-}
-
-article table tr:first-child td {
-  border-top: none !important;
-}
-
-/* Remove default cell borders since we use outer border */
-article table th,
-article table td {
   border-left: none !important;
   border-right: none !important;
 }
+.dark article table td {
+  color: #71717a !important;
+}
+
+article table tbody tr:first-child td {
+  border-top: none !important;
+}
 
 /* ================================================
-   CARDS: 16px padding, 13px/12px text, 2-col grid 12px gap
+   CARDS: #09090b bg, #1a1a1f border, #18181b hover
    ================================================ */
 [data-fd-card],
 .fd-card {
@@ -216,17 +250,20 @@ article table td {
 [data-fd-card] p,
 .fd-card p {
   font-size: 12px !important;
+}
+.dark [data-fd-card] p,
+.dark .fd-card p {
   color: #71717a !important;
 }
 
-[data-theme="dark"] [data-fd-card],
-[data-theme="dark"] .fd-card {
+.dark [data-fd-card],
+.dark .fd-card {
   background: #09090b !important;
   border-color: #1a1a1f !important;
 }
 
-[data-theme="dark"] [data-fd-card]:hover,
-[data-theme="dark"] .fd-card:hover {
+.dark [data-fd-card]:hover,
+.dark .fd-card:hover {
   background: #18181b !important;
   border-color: #2a2a30 !important;
 }
@@ -238,7 +275,7 @@ article table td {
 }
 
 /* ================================================
-   TOC: 12px, left border, blue active
+   TOC: 12px, border-left #1a1a1f, active blue
    ================================================ */
 [data-fd-toc] a {
   font-size: 12px !important;
@@ -246,47 +283,52 @@ article table td {
   border-left: 1px solid #1a1a1f;
   transition: all 0.15s;
 }
-
-[data-fd-toc] a:hover {
+.dark [data-fd-toc] a {
+  color: #71717a !important;
+}
+.dark [data-fd-toc] a:hover {
   color: #fafafa !important;
 }
-
 [data-fd-toc] a[data-active="true"],
 [data-fd-toc] [data-active="true"] {
   color: #fafafa !important;
-  border-left-color: hsl(217 91% 60%) !important;
+  border-left-color: #3b82f6 !important;
 }
 
-/* TOC title */
+/* TOC title: 12px 500 #71717a */
 [data-fd-toc] > p,
 [data-fd-toc] > div > p:first-child {
   font-size: 12px !important;
   font-weight: 500 !important;
+}
+.dark [data-fd-toc] > p,
+.dark [data-fd-toc] > div > p:first-child {
   color: #71717a !important;
 }
 
 /* ================================================
-   BREADCRUMB: 12px, muted color, blue active
+   BREADCRUMB: 12px, #71717a, active #3b82f6
    ================================================ */
 [data-fd-breadcrumb],
 nav[aria-label="breadcrumb"] {
   font-size: 12px !important;
   margin-bottom: 16px !important;
 }
-
 [data-fd-breadcrumb] a,
 nav[aria-label="breadcrumb"] a {
-  color: #71717a !important;
   font-size: 12px !important;
 }
-
-[data-fd-breadcrumb] [aria-current],
-nav[aria-label="breadcrumb"] [aria-current] {
-  color: hsl(217 91% 60%) !important;
+.dark [data-fd-breadcrumb] a,
+.dark nav[aria-label="breadcrumb"] a {
+  color: #71717a !important;
+}
+.dark [data-fd-breadcrumb] [aria-current],
+.dark nav[aria-label="breadcrumb"] [aria-current] {
+  color: #3b82f6 !important;
 }
 
 /* ================================================
-   HIDE: footer pagination, bottom nav
+   HIDE: footer pagination
    ================================================ */
 [data-fd-docs-footer],
 nav[data-fd-footer] {
@@ -301,9 +343,17 @@ nav[data-fd-footer] {
 }
 
 /* ================================================
-   CALLOUTS: compact
+   CALLOUTS: 13px, compact
    ================================================ */
 [data-fd-callout] {
   font-size: 13px !important;
   padding: 12px 16px !important;
+}
+
+/* ================================================
+   GLOBAL: ensure #09090b body bg
+   ================================================ */
+.dark body,
+.dark {
+  background-color: #09090b !important;
 }
