@@ -2,83 +2,173 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
+/*
+ * Theme C exact values from mockup:
+ * --bg: #09090b          → hsl(240 6% 3.3%)
+ * --sidebar-bg: #0c0c0e  → hsl(240 8% 3.9%)
+ * --border: #1a1a1f      → hsl(240 8% 11%)
+ * --text: #fafafa
+ * --text-muted: #71717a  → hsl(240 4% 46%)
+ * --accent: #3b82f6
+ * --hover: #18181b       → hsl(240 6% 10%)
+ * --card-bg: #111113
+ */
+
 :root {
   --fd-sidebar-width: 220px;
 }
 
-/* Tighter sidebar */
-:is([data-theme="dark"]) {
-  --fd-background: 0 0% 3.5%;
-  --fd-card: 0 0% 5.5%;
-  --fd-muted: 0 0% 8%;
-  --fd-border: 0 0% 10%;
+[data-theme="dark"] {
+  --fd-background: 240 6% 3.3%;
+  --fd-foreground: 0 0% 98%;
+  --fd-card: 240 8% 5%;
+  --fd-muted: 240 4% 46%;
+  --fd-muted-foreground: 240 4% 46%;
+  --fd-border: 240 8% 11%;
+  --fd-accent: 217 91% 60%;
+  --fd-accent-foreground: 0 0% 98%;
+  --fd-primary: 217 91% 60%;
+  --fd-ring: 217 91% 60%;
+  --fd-popover: 240 6% 6%;
+  --fd-secondary: 240 6% 10%;
 }
 
-/* Sidebar density */
-.fd-sidebar nav {
-  font-size: 0.8125rem;
+/* ---- SIDEBAR: 220px, 13px, 6px 12px padding ---- */
+[data-theme="dark"] aside[data-fd-sidebar] {
+  background: #0c0c0e;
 }
 
-.fd-sidebar nav a {
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
+aside[data-fd-sidebar] [data-fd-sidebar-content] a {
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin: 1px 0;
 }
 
-.fd-sidebar nav p {
-  font-size: 0.8125rem;
+aside[data-fd-sidebar] [data-fd-sidebar-content] p,
+aside[data-fd-sidebar] [data-fd-sidebar-content] span[class*="text"] {
+  font-size: 13px;
+  font-weight: 500;
 }
 
-/* Tighter card links on landing page */
-.fd-card {
-  padding: 0.875rem 1rem;
+/* Active sidebar item: blue text + subtle blue bg */
+aside[data-fd-sidebar] a[data-active="true"] {
+  color: hsl(217 91% 60%) !important;
+  background: rgba(59, 130, 246, 0.08) !important;
+  font-weight: 500;
 }
 
-/* More compact headings */
-article h1 {
-  font-size: 1.875rem !important;
-  letter-spacing: -0.04em;
+/* ---- NAVBAR: 13px links, blur bg ---- */
+[data-theme="dark"] header[data-fd-navbar],
+[data-theme="dark"] nav[data-fd-navbar] {
+  background: rgba(9, 9, 11, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1a1a1f;
+}
+
+header[data-fd-navbar] a,
+nav[data-fd-navbar] a {
+  font-size: 13px;
+}
+
+/* ---- CONTENT: 32px h1, 18px h2 w/ border, 14px body ---- */
+article h1,
+[data-fd-docs] h1 {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.04em !important;
+  margin-bottom: 8px;
+}
+
+[data-fd-docs] [data-fd-docs-description] {
+  font-size: 15px;
+  color: hsl(240 4% 46%);
+  margin-bottom: 32px;
+  line-height: 1.5;
 }
 
 article h2 {
-  font-size: 1.125rem !important;
-  letter-spacing: -0.02em;
-  margin-top: 1.75rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid hsl(var(--fd-border));
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1a1a1f;
 }
 
 article h3 {
-  font-size: 1rem !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
   letter-spacing: -0.01em;
 }
 
-/* Tighter body text */
-article p {
-  font-size: 0.875rem;
-  line-height: 1.7;
+article p,
+article li {
+  font-size: 14px;
+  line-height: 1.8;
 }
 
-/* Tighter table cells */
+/* ---- TABLES: 13px, 10px 16px cells, rounded border ---- */
 article table {
-  font-size: 0.8125rem;
+  font-size: 13px;
 }
 
 article table th {
-  padding: 0.5rem 0.875rem;
+  padding: 10px 16px;
   font-weight: 500;
-  font-size: 0.75rem;
+  font-size: 12px;
+}
+
+[data-theme="dark"] article table th {
+  background: #18181b;
 }
 
 article table td {
-  padding: 0.5rem 0.875rem;
+  padding: 10px 16px;
 }
 
-/* TOC density */
-.fd-toc a {
-  font-size: 0.75rem;
+/* ---- CARDS: 16px padding, 13px title, 12px desc ---- */
+[data-fd-card] {
+  padding: 16px !important;
+  border-radius: 8px;
 }
 
-/* Compact navbar */
-nav.fd-navbar {
-  font-size: 0.8125rem;
+[data-fd-card] [data-fd-card-title] {
+  font-size: 13px !important;
+  font-weight: 600;
+}
+
+[data-fd-card] p {
+  font-size: 12px !important;
+}
+
+[data-theme="dark"] [data-fd-card] {
+  background: #09090b;
+  border-color: #1a1a1f;
+}
+
+[data-theme="dark"] [data-fd-card]:hover {
+  background: #18181b;
+  border-color: #2a2a30;
+}
+
+/* ---- TOC: 12px items, left border ---- */
+[data-fd-toc] a {
+  font-size: 12px;
+}
+
+[data-fd-toc] [data-active="true"] {
+  color: hsl(217 91% 60%) !important;
+}
+
+/* ---- SEARCH: tight ---- */
+[data-fd-search] button {
+  font-size: 13px;
+}
+
+/* ---- CALLOUTS: compact ---- */
+[data-fd-callout] {
+  font-size: 13px;
+  padding: 12px 16px;
 }
